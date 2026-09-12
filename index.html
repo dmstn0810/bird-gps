@@ -68,6 +68,9 @@
                 <button class="nav-tab" data-tab="deepdive-tab">
                     <i class="fa-solid fa-microscope"></i> 종별 생태 심층분석
                 </button>
+                <button class="nav-tab" data-tab="ecology-tab">
+                    <i class="fa-solid fa-book-open"></i> 국내 기본 생태도감
+                </button>
                 <button class="nav-tab" data-tab="data-tab">
                     <i class="fa-solid fa-table"></i> 데이터 탐색 & 업로드
                 </button>
@@ -604,7 +607,429 @@
                     </div>
                 </section>
 
-                <!-- TAB 4: DATA TABLE & UPLOADER -->
+                <!-- TAB 4: KOREA WILD BIRD ECOLOGICAL ENCYCLOPEDIA -->
+                <section class="tab-pane" id="ecology-tab">
+                    <div class="analytics-container">
+                        <div class="analytics-header">
+                            <h2><i class="fa-solid fa-book-open"></i> 대한민국 야생조류 5종 종합 기본 생태도감 (Avian Natural History)</h2>
+                            <p>형태적 특징, 생태 및 생활사(번식·식성), 국내 활동지역 및 도래지, 행동권 및 이동 범위, 법적 보호·관리 현황 총망라</p>
+                        </div>
+
+                        <!-- Species Selector Subnav -->
+                        <div class="eco-subnav">
+                            <button class="eco-tab-btn active" data-ecotab="eco-cormorant">
+                                <i class="fa-solid fa-water"></i> 🦅 민물가마우지
+                            </button>
+                            <button class="eco-tab-btn" data-ecotab="eco-magpie">
+                                <i class="fa-solid fa-tree"></i> 🕊️ 까치
+                            </button>
+                            <button class="eco-tab-btn" data-ecotab="eco-swan">
+                                <i class="fa-solid fa-globe"></i> 🦢 큰고니
+                            </button>
+                            <button class="eco-tab-btn" data-ecotab="eco-mallard">
+                                <i class="fa-solid fa-feather"></i> 🦆 청둥오리
+                            </button>
+                            <button class="eco-tab-btn" data-ecotab="eco-spotbill">
+                                <i class="fa-solid fa-feather-pointed"></i> 🦆 흰뺨검둥오리
+                            </button>
+                        </div>
+
+                        <!-- 1. CORMORANT ECOLOGY -->
+                        <div class="eco-pane active" id="eco-cormorant">
+                            <div class="eco-species-header">
+                                <div class="eco-title-group">
+                                    <h3>🦅 민물가마우지 <span class="eco-scientific">Phalacrocorax carbo</span></h3>
+                                    <div class="eco-taxonomy">사다새목(Pelecaniformes) 가마우지과(Phalacrocoracidae) | 영명: Great Cormorant</div>
+                                </div>
+                                <div class="eco-badge-list">
+                                    <span class="eco-status-badge badge-invasive"><i class="fa-solid fa-triangle-exclamation"></i> 유해야생동물 (환경부 2024)</span>
+                                    <span class="eco-status-badge badge-resident"><i class="fa-solid fa-house"></i> 국내 텃새화 정착종</span>
+                                    <span class="eco-status-badge badge-waterfowl"><i class="fa-solid fa-fish"></i> 수중 잠수포식자 (어식성)</span>
+                                </div>
+                            </div>
+
+                            <div class="eco-sections-grid">
+                                <!-- Morphology -->
+                                <div class="eco-card">
+                                    <div class="eco-card-header"><i class="fa-solid fa-ruler-combined"></i> (1) 형태적 특징 (Morphology)</div>
+                                    <table class="eco-table">
+                                        <tr><th>몸길이(체장)</th><td>약 80 ~ 100 cm</td></tr>
+                                        <tr><th>날개편길이(익폭)</th><td>약 130 ~ 160 cm</td></tr>
+                                        <tr><th>몸무게</th><td>1.8 ~ 3.0 kg</td></tr>
+                                        <tr><th>깃털 및 외형</th><td>전신이 광택 있는 흑갈색. 번식기에는 머리에 백색 장식깃과 뺨에 흰 반점 발생.</td></tr>
+                                        <tr><th>부리 및 발</th><td>부리 끝이 날카로운 갈고리형으로 물고기 포획에 최적화. 4개 발가락이 모두 막으로 연결된 <b>전갈퀴(Totipalmate)</b> 구조.</td></tr>
+                                        <tr><th>특이 생리구조</th><td>깃털에 방수유선(Uropygial gland) 분비액이 적어 물에 잘 젖으며 부력을 줄여 잠수에 유리함. 대신 물 밖에서 <b>양 날개를 펴고 햇볕과 바람에 말리는(Wing-spreading)</b> 행동 필수.</td></tr>
+                                    </table>
+                                </div>
+
+                                <!-- Ecology & Life History -->
+                                <div class="eco-card">
+                                    <div class="eco-card-header"><i class="fa-solid fa-egg"></i> (2) 생태 및 생활사 (Ecology & Breeding)</div>
+                                    <table class="eco-table">
+                                        <tr><th>식성 (Diet)</th><td><b>100% 어식성(Pisivore)</b>. 붕어, 잉어, 피라미, 누치, 메기 등 담수 어류 포식. 일일 체중의 15~20%(약 400~700g) 섭식.</td></tr>
+                                        <tr><th>사냥 기법</th><td>수심 1 ~ 10m(최대 20m)까지 잠수하여 빠른 추진력으로 유영하며 물고기를 추적 포획.</td></tr>
+                                        <tr><th>번식기</th><td>4월 ~ 7월 (연 1회 번식)</td></tr>
+                                        <tr><th>영소(둥지) 습성</th><td>하천·호소 내 하중도, 저수지 주변 수목(버드나무, 아까시나무) 또는 강변 절벽에 나뭇가지로 접시 모양 둥지 축조. <b>집단 영소(Colonial nesting)</b> 형성.</td></tr>
+                                        <tr><th>산란 및 포란</th><td>연한 청록색 알 3 ~ 5개 산란. 암수 공동 포란(28~31일) 및 육추(약 50일).</td></tr>
+                                        <tr><th>이동성 지위</th><td>과거 동절기 한반도를 찾던 겨울철새였으나, 2000년대 이후 한강·금강·낙동강 등지에서 번식 성공 후 <b>사계절 상주하는 텃새</b>로 완전 정착.</td></tr>
+                                    </table>
+                                </div>
+
+                                <!-- Habitat & Distribution in Korea -->
+                                <div class="eco-card">
+                                    <div class="eco-card-header"><i class="fa-solid fa-map-pin"></i> (3) 국내 활동지역 및 주요 서식처 (Habitat in Korea)</div>
+                                    <p class="eco-desc-p">먹이원인 담수 어류가 풍부하고 포식자의 접근이 차단된 하중도나 절벽, 수변 수목림이 존재하는 내륙 대형 수계에 집중 분포합니다.</p>
+                                    <table class="eco-table">
+                                        <tr><th>주요 서식 수계</th><td><b>한강 수계</b>(의암호, 팔당호, 서울 밤섬), <b>금강 수계</b>(대전 갑천 합류부, 세종보, 공주보), <b>낙동강 본류</b>, <b>만경강</b>, <b>충북 괴산 달천(괴강)</b>, <b>소양호·충주호</b> 등</td></tr>
+                                        <tr><th>선호 환경</th><td>수심 1~5m의 개활 하천, 저수지, 하구 석호 및 휴식을 위한 하천 내 암반·모래톱·말뚝</td></tr>
+                                        <tr><th>휴식 및 잠자리</th><td>야간에는 수면 위로 솟은 고사목 가지나 절벽 바위에 모여 집단 취침(Roosting).</td></tr>
+                                    </table>
+                                </div>
+
+                                <!-- Home Range & Migration -->
+                                <div class="eco-card">
+                                    <div class="eco-card-header"><i class="fa-solid fa-compass"></i> (4) 행동권 및 이동 범위 (Home Range)</div>
+                                    <table class="eco-table">
+                                        <tr><th>일일 활동반경</th><td>안정적인 잠자리/둥지를 기점으로 <b>반경 5 ~ 30 km</b> 내외 하천 구간을 왕복하며 일일 먹이활동 전개.</td></tr>
+                                        <tr><th>광역 수계 분산</th><td>동절기 결빙이나 먹이원 고갈 시 하류나 인근 수계로 <b>70 ~ 150 km</b> 지역 분산(Regional Dispersal).</td></tr>
+                                        <tr><th>비행 특성</th><td>비행 속도 시속 40 ~ 70 km/h, 장거리 이동 시 V자 대형의 편대 비행(Flocking)으로 공기 저항 절감 (최고 순간 속도 93 km/h).</td></tr>
+                                    </table>
+                                </div>
+
+                                <!-- Legal Status & Management -->
+                                <div class="eco-card eco-full-card">
+                                    <div class="eco-card-header"><i class="fa-solid fa-scale-balanced"></i> (5) 법적 보호 등급 및 관리 현황 (Legal & Environmental Status)</div>
+                                    <table class="eco-table">
+                                        <tr><th>법적 지위</th><td><b>환경부 지정 유해야생동물</b> (2024년 3월 15일 시행 「야생생물 보호 및 관리에 관한 법률 시행규칙」 개정)</td></tr>
+                                        <tr><th>지정 배경 및 피해</th><td>
+                                            1) <b>수목 백화 현상</b>: 집단 번식지의 배설물(강한 산성의 요산) 누적으로 아까시나무·버드나무 군락이 하얗게 말라 죽는 백화(Whitening) 현상 발생.<br/>
+                                            2) <b>내수면 어업 피해</b>: 왕성한 어류 섭식량으로 쏘가리, 붕어, 은어 등 내수면 어족 자원 고갈 및 양식장 피해 호소.
+                                        </td></tr>
+                                        <tr><th>관리 대책</th><td>지자체 포획 허가제 운영, 비살상 퇴치(소음·레이저 기피 장치), 하중도 번식지 둥지 제거 및 알 관리 등 적정 개체군 조절 정책 추진 중.</td></tr>
+                                    </table>
+                                    <div class="telemetry-link-box">
+                                        <strong>🛰️ GPS 텔레메트리 실측 연계</strong>: 본 연구의 5개체 추적 결과, 방사 직후 73km를 비행하여 충북 괴산 달천에 집결한 점, ku2604 개체가 안동 구담보까지 116km를 분산하여 매일 7.7km 출퇴근 비행을 수행한 점은 민물가마우지의 강력한 수계 탐색력과 거점 고착성을 과학적으로 실증합니다.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 2. MAGPIE ECOLOGY -->
+                        <div class="eco-pane" id="eco-magpie">
+                            <div class="eco-species-header">
+                                <div class="eco-title-group">
+                                    <h3>🕊️ 까치 <span class="eco-scientific">Pica sericea</span></h3>
+                                    <div class="eco-taxonomy">참새목(Passeriformes) 까마귀과(Corvidae) | 영명: Oriental Magpie</div>
+                                </div>
+                                <div class="eco-badge-list">
+                                    <span class="eco-status-badge badge-resident"><i class="fa-solid fa-tree"></i> 대표 영구 텃새 (Sedentary)</span>
+                                    <span class="eco-status-badge badge-invasive"><i class="fa-solid fa-bolt"></i> 유해야생동물 (과수/전력)</span>
+                                    <span class="eco-status-badge badge-migratory"><i class="fa-solid fa-brain"></i> 지능형 잡식성 (거울인지 능력)</span>
+                                </div>
+                            </div>
+
+                            <div class="eco-sections-grid">
+                                <!-- Morphology -->
+                                <div class="eco-card">
+                                    <div class="eco-card-header"><i class="fa-solid fa-ruler-combined"></i> (1) 형태적 특징 (Morphology)</div>
+                                    <table class="eco-table">
+                                        <tr><th>몸길이(체장)</th><td>약 44 ~ 48 cm (꼬리길이 20~25cm가 전체의 절반 차지)</td></tr>
+                                        <tr><th>날개편길이(익폭)</th><td>약 55 ~ 62 cm</td></tr>
+                                        <tr><th>몸무게</th><td>200 ~ 260 g</td></tr>
+                                        <tr><th>깃털 및 외형</th><td>머리·가슴·등·꼬리는 윤기 있는 검은색(햇빛에 따라 짙은 보라 및 청록색 금속 광택). 어깨깃과 배는 순백색.</td></tr>
+                                        <tr><th>비행 식별 포인트</th><td>날개 첫째날개깃에 흰색 무늬가 있어 날개를 펼치면 흑백의 강한 대비가 돋보임. 꼬리깃이 층을 이룬 계단형 쐐기꼬리.</td></tr>
+                                        <tr><th>부리 및 다리</th><td>부리는 검고 곧으며 두꺼워 단단한 곡물이나 땅속 곤충을 파헤치기 적합. 다리는 강건한 검은색.</td></tr>
+                                    </table>
+                                </div>
+
+                                <!-- Ecology & Life History -->
+                                <div class="eco-card">
+                                    <div class="eco-card-header"><i class="fa-solid fa-egg"></i> (2) 생태 및 생활사 (Ecology & Breeding)</div>
+                                    <table class="eco-table">
+                                        <tr><th>식성 (Diet)</th><td><b>광범위한 잡식성(Omnivore)</b>. 메뚜기, 지렁이, 거미 등 지면 곤충부터 벼 낙곡, 옥수수, 사과·배 등 과실, 설치류, 음식물 쓰레기까지 섭식.</td></tr>
+                                        <tr><th>채식 행동</th><td>지면을 두 발로 걷거나 가볍게 깡충거리며(Hopping) 낙엽과 흙을 들추는 지면 채식(Ground foraging).</td></tr>
+                                        <tr><th>번식기</th><td>2월 ~ 5월 (연 1회)</td></tr>
+                                        <tr><th>둥지 구조</th><td>키 큰 활엽수(포플러, 은사시나무, 느티나무) 또는 고압 전신주·송전탑에 마른 나뭇가지와 진흙을 엮어 <b>천장이 덮인 거대한 구형(Dome) 둥지</b> 축조.</td></tr>
+                                        <tr><th>산란 및 육추</th><td>연한 청록색에 갈색 반점이 있는 알 5 ~ 8개 산란. 암컷 포란(17~18일), 부화 후 25일경 이소.</td></tr>
+                                        <tr><th>이동성</th><td>일 년 내내 번식지와 둥지 주변을 벗어나지 않는 <b>100% 영구 텃새(Sedentary resident bird)</b>.</td></tr>
+                                    </table>
+                                </div>
+
+                                <!-- Habitat & Distribution in Korea -->
+                                <div class="eco-card">
+                                    <div class="eco-card-header"><i class="fa-solid fa-map-pin"></i> (3) 국내 활동지역 및 주요 서식처 (Habitat in Korea)</div>
+                                    <p class="eco-desc-p">전국 어디서나 흔히 관찰되며, 특히 인간 거주지 및 농경지가 인접한 평지 수목 지대를 가장 선호합니다.</p>
+                                    <table class="eco-table">
+                                        <tr><th>주요 서식지</th><td>한반도 전역(내륙 평야, 농촌 마을, 과수원 단지, 도심 공원, 아파트 단지 수목, 학교 숲 등)</td></tr>
+                                        <tr><th>제외 지역</th><td>고산 지대(해발 1,000m 이상 심산유곡) 및 울릉도 등 격리된 도서 지역(일부 인위적 방사지 제외)</td></tr>
+                                        <tr><th>세력권 고착</th><td>번식쌍은 번식기가 끝난 후에도 둥지를 중심으로 일 년 내내 세력권을 방어하며 상주.</td></tr>
+                                    </table>
+                                </div>
+
+                                <!-- Home Range & Migration -->
+                                <div class="eco-card">
+                                    <div class="eco-card-header"><i class="fa-solid fa-compass"></i> (4) 행동권 및 이동 범위 (Home Range)</div>
+                                    <table class="eco-table">
+                                        <tr><th>일일 행동반경</th><td>둥지 중심 <b>반경 0.3 ~ 1.5 km</b> 이내 (행동권 면적 보통 0.5 ~ 3.0 km²로 매우 협소).</td></tr>
+                                        <tr><th>비행 패턴</th><td>원거리 연속 활공보다는 수목, 지붕, 전신주 사이를 짧게 오가는 단거리 점프 비행 (비행 속도 시속 15 ~ 35 km/h).</td></tr>
+                                        <tr><th>주야간 리듬</th><td>철저한 주행성(Diurnal). 일몰 후 19시부터 익일 05시까지 송전탑 프레임이나 거목 가지에서 완전히 정지(0 km/h) 상태로 수면.</td></tr>
+                                    </table>
+                                </div>
+
+                                <!-- Legal Status & Management -->
+                                <div class="eco-card eco-full-card">
+                                    <div class="eco-card-header"><i class="fa-solid fa-scale-balanced"></i> (5) 법적 보호 등급 및 관리 현황 (Legal & Environmental Status)</div>
+                                    <table class="eco-table">
+                                        <tr><th>법적 지위</th><td><b>환경부 지정 유해야생동물</b> (농작물 피해 및 전력 설비 고장 유발)</td></tr>
+                                        <tr><th>주요 피해 유형</th><td>
+                                            1) <b>전력 설비 정전 사고</b>: 전신주 개폐기나 변압기 위에 둥지를 지을 때 나뭇가지와 철사 조각이 접촉하여 대규모 정전 및 누전 화재 유발.<br/>
+                                            2) <b>과수원 피해</b>: 사과, 배, 포도 등 수확기 과실의 상품성을 쪼아 훼손시키는 영농 피해.
+                                        </td></tr>
+                                        <tr><th>관리 대책</th><td>한국전력공사 전신주 둥지 철거 및 조류 기피기 설치, 지자체 수확기 포획단 운영을 통한 피해 예방.</td></tr>
+                                    </table>
+                                    <div class="telemetry-link-box">
+                                        <strong>🛰️ GPS 텔레메트리 실측 연계</strong>: 충주시 목행동·대소원면 7개체 추적 결과, 3개월간 최대 변위가 0.3~5.7km에 불과하였고, ku2505 개체가 94.7일간 둥지 주변 1km 세력권을 100% 결측 없이 유지한 데이터는 까치의 완벽한 정주 텃새 생태를 실증합니다.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 3. SWAN ECOLOGY -->
+                        <div class="eco-pane" id="eco-swan">
+                            <div class="eco-species-header">
+                                <div class="eco-title-group">
+                                    <h3>🦢 큰고니 <span class="eco-scientific">Cygnus cygnus</span></h3>
+                                    <div class="eco-taxonomy">기러기목(Anseriformes) 오리과(Anatidae) | 영명: Whooper Swan</div>
+                                </div>
+                                <div class="eco-badge-list">
+                                    <span class="eco-status-badge badge-protected"><i class="fa-solid fa-shield-halved"></i> 천연기념물 제201-2호</span>
+                                    <span class="eco-status-badge badge-protected"><i class="fa-solid fa-ribbon"></i> 멸종위기 야생생물 II급</span>
+                                    <span class="eco-status-badge badge-migratory"><i class="fa-solid fa-plane-departure"></i> 대륙간 초장거리 겨울철새</span>
+                                </div>
+                            </div>
+
+                            <div class="eco-sections-grid">
+                                <!-- Morphology -->
+                                <div class="eco-card">
+                                    <div class="eco-card-header"><i class="fa-solid fa-ruler-combined"></i> (1) 형태적 특징 (Morphology)</div>
+                                    <table class="eco-table">
+                                        <tr><th>몸길이(체장)</th><td>약 140 ~ 165 cm</td></tr>
+                                        <tr><th>날개편길이(익폭)</th><td>약 205 ~ 240 cm (한반도 도래 조류 중 최대급)</td></tr>
+                                        <tr><th>몸무게</th><td>7.5 ~ 14.0 kg (대형 중량 조류)</td></tr>
+                                        <tr><th>성조 외형</th><td>전신이 눈부시게 하얀 순백색. 어린 새(유조)는 연한 회갈색을 띰.</td></tr>
+                                        <tr><th>부리 식별 포인트</th><td>부리 끝은 검은색, <b>눈앞 기부는 선명한 노란색</b>. 노란 부분이 콧구멍을 넘어 앞쪽으로 길게 쐐기 모양으로 뻗어 고니(Tundra Swan)와 완벽히 구별.</td></tr>
+                                        <tr><th>다리 및 발</th><td>검은색이며 넓은 물갈퀴를 지녀 수상 이착륙 시 강력한 수면 차기(Pattering) 가능.</td></tr>
+                                    </table>
+                                </div>
+
+                                <!-- Ecology & Life History -->
+                                <div class="eco-card">
+                                    <div class="eco-card-header"><i class="fa-solid fa-egg"></i> (2) 생태 및 생활사 (Ecology & Breeding)</div>
+                                    <table class="eco-table">
+                                        <tr><th>식성 (Diet)</th><td><b>순수 초식성(Herbivore)</b>. 수생식물의 덩이줄기(괴경), 뿌리, 줄기, 침수식물 잎. (부산 을숙도에서는 새섬매자기의 덩이줄기가 주식).</td></tr>
+                                        <tr><th>섭식 행동</th><td>잠수를 하지 못하므로 긴 목을 물속 깊이 넣거나 몸을 물구나무서듯 곤두세워(Up-ending) 바닥 뻘의 식물 뿌리를 채취.</td></tr>
+                                        <tr><th>번식기</th><td>5월 ~ 7월 (북극권 및 아북극 툰드라 습지)</td></tr>
+                                        <tr><th>둥지 구조</th><td>시베리아, 몽골 고원의 툰드라 호소 갈대밭에 갈대와 이끼를 높이 쌓아 지름 1~2m의 거대한 둔덕형 둥지 축조. 4 ~ 7개 산란.</td></tr>
+                                        <tr><th>사회적 구조</th><td>평생 일부일처제(Monogamous)를 유지하며, 월동지에서도 암수 한 쌍 및 당해 태어난 어린 새가 <b>가족 군집(Family flock)</b>을 이루어 행동.</td></tr>
+                                        <tr><th>이동성</th><td>동아시아-대양주 이동경로(EAAF)를 왕복하는 <b>대륙간 초장거리 겨울철새</b>. 10월 말 한반도 도래, 3월 하순 시베리아로 북상.</td></tr>
+                                    </table>
+                                </div>
+
+                                <!-- Habitat & Distribution in Korea -->
+                                <div class="eco-card">
+                                    <div class="eco-card-header"><i class="fa-solid fa-map-pin"></i> (3) 국내 활동지역 및 주요 서식처 (Habitat in Korea)</div>
+                                    <p class="eco-desc-p">조류 인플루엔자나 결빙의 영향을 덜 받고, 얕은 수심의 모래톱과 갯벌에 수생식생이 풍부한 하구 기수역과 석호에 집중 도래합니다.</p>
+                                    <table class="eco-table">
+                                        <tr><th>국내 최대 월동지</th><td><b>부산 낙동강 하구 을숙도 및 명지 갯벌</b> (천연기념물 제179호 지정 구역)</td></tr>
+                                        <tr><th>주요 도래 거점</th><td>강릉 경포호, 양양 남대천, 충남 천수만, 전북 금강호, 전남 순천만, 창원 주남저수지, 경기 팔당호 등</td></tr>
+                                        <tr><th>서식 환경 요건</th><td>수심 0.5 ~ 1.5m의 얕은 수면, 파도가 잔잔한 만(Bay) 및 넓은 갯벌 노출지</td></tr>
+                                    </table>
+                                </div>
+
+                                <!-- Home Range & Migration -->
+                                <div class="eco-card">
+                                    <div class="eco-card-header"><i class="fa-solid fa-compass"></i> (4) 행동권 및 이동 범위 (Home Range)</div>
+                                    <table class="eco-table">
+                                        <tr><th>월동지 일일 반경</th><td>을숙도 중심 <b>반경 5 ~ 20 km</b>. 간조 시 갯벌 섭식, 만조 시 수면 부유 휴식.</td></tr>
+                                        <tr><th>대륙간 횡단 거리</th><td>부산 하구 ↔ 시베리아 레나강 툰드라(65°N) <b>직선 3,384 km</b> (실 비행 누적 7,000 ~ 16,000 km).</td></tr>
+                                        <tr><th>비행 고도 및 속도</th><td>소백·태백산맥 및 몽골 고원 통과 시 <b>고도 1,000 ~ 1,500 m</b> 유지. 순풍 시 최고 시속 85 ~ 153 km/h의 초고속 순항 비행.</td></tr>
+                                    </table>
+                                </div>
+
+                                <!-- Legal Status & Management -->
+                                <div class="eco-card eco-full-card">
+                                    <div class="eco-card-header"><i class="fa-solid fa-scale-balanced"></i> (5) 법적 보호 등급 및 관리 현황 (Legal & Environmental Status)</div>
+                                    <table class="eco-table">
+                                        <tr><th>법적 보호 등급</th><td><b>국가유산청 천연기념물 제201-2호</b> / <b>환경부 멸종위기 야생생물 II급</b> / CITES 부속서 II</td></tr>
+                                        <tr><th>서식 위협 요인</th><td>낙동강 하구 갯벌 매립, 수상 태양광 및 교량 건설, 기수역 식생(새섬매자기) 군락 쇠퇴 및 수질 오염.</td></tr>
+                                        <tr><th>보전 및 연구 활동</th><td>을숙도 에코센터 중심 겨울철 먹이주기(고구마, 벼), 새섬매자기 인공 증식 및 복원, 한·러·몽 국제 철새 이동로 공동 조사.</td></tr>
+                                    </table>
+                                    <div class="telemetry-link-box">
+                                        <strong>🛰️ GPS 텔레메트리 실측 연계</strong>: 본 연구의 17개체 전수 추적 결과, 부산 을숙도에서 출발한 개체들이 3월 하순 한반도를 종단하여 몽골과 바이칼호를 거쳐 북위 64.98°N 시베리아 영구동토대까지 3,384km를 주파한 기록(ke2403)과 633일간의 장기 생존(ke2407)은 동북아 전체 큰고니 보전의 핵심 월동지가 부산 하구임을 결정적으로 입증합니다.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 4. MALLARD ECOLOGY -->
+                        <div class="eco-pane" id="eco-mallard">
+                            <div class="eco-species-header">
+                                <div class="eco-title-group">
+                                    <h3>🦆 청둥오리 <span class="eco-scientific">Anas platyrhynchos</span></h3>
+                                    <div class="eco-taxonomy">기러기목(Anseriformes) 오리과(Anatidae) | 영명: Mallard</div>
+                                </div>
+                                <div class="eco-badge-list">
+                                    <span class="eco-status-badge badge-migratory"><i class="fa-solid fa-water"></i> 대표 수면채식성 (Dabbling Duck)</span>
+                                    <span class="eco-status-badge badge-waterfowl"><i class="fa-solid fa-virus"></i> AI(조류인플루엔자) 중점예찰종</span>
+                                    <span class="eco-status-badge badge-resident"><i class="fa-solid fa-feather"></i> 동계철새 및 일부 텃새화</span>
+                                </div>
+                            </div>
+
+                            <div class="eco-sections-grid">
+                                <!-- Morphology -->
+                                <div class="eco-card">
+                                    <div class="eco-card-header"><i class="fa-solid fa-ruler-combined"></i> (1) 형태적 특징 (Morphology)</div>
+                                    <table class="eco-table">
+                                        <tr><th>몸길이(체장)</th><td>약 50 ~ 65 cm</td></tr>
+                                        <tr><th>날개편길이(익폭)</th><td>약 80 ~ 100 cm</td></tr>
+                                        <tr><th>몸무게</th><td>0.9 ~ 1.5 kg</td></tr>
+                                        <tr><th>수컷(번식깃) 외형</th><td>머리는 광택 있는 선명한 청록색, 목에 가는 흰 띠, 가슴은 붉은 갈색, 몸통은 밝은 회색. 꼬리 중앙의 검은 깃 4장이 위로 동그랗게 말려 올라감. 부리는 밝은 황록색.</td></tr>
+                                        <tr><th>암컷 외형</th><td>몸 전체가 얼룩덜룩한 황갈색 바탕에 어두운 반점(풀숲 완벽 위장 보호색). 부리는 주황색 바탕에 중앙이 어두움.</td></tr>
+                                        <tr><th>공통 식별 포인트</th><td>날개 뒤쪽에 푸른 보라색의 선명한 <b>익경(Speculum, 날개 거울)</b>과 이를 둘러싼 흑백의 띠 보유.</td></tr>
+                                    </table>
+                                </div>
+
+                                <!-- Ecology & Life History -->
+                                <div class="eco-card">
+                                    <div class="eco-card-header"><i class="fa-solid fa-egg"></i> (2) 생태 및 생활사 (Ecology & Breeding)</div>
+                                    <table class="eco-table">
+                                        <tr><th>식성 (Diet)</th><td><b>잡식성(초식 비중 높음)</b>. 수생식물의 잎·줄기·씨앗, 논의 벼 낙곡, 수초, 곤충, 달팽이, 작은 물고기 등.</td></tr>
+                                        <tr><th>채식 기법</th><td>잠수를 하지 않고 물구나무를 서서 엉덩이를 치켜들고 머리만 물속에 넣어 바닥 진흙을 부리로 체질하듯 거르는 <b>수면 채식(Dabbling)</b>.</td></tr>
+                                        <tr><th>번식기</th><td>4월 ~ 7월 (연 1회)</td></tr>
+                                        <tr><th>둥지 구조</th><td>물가 주변 갈대밭, 풀숲, 제방 지면에 마른 풀을 모으고 암컷 가슴 솜털을 깔아 둥지 축조. 8 ~ 13개 산란. 포란 26~28일.</td></tr>
+                                        <tr><th>새끼의 특성</th><td>부화하자마자 솜털로 덮여 눈을 뜨고 물속으로 들어가는 <b>조숙성(Precocial)</b>.</td></tr>
+                                        <tr><th>이동성</th><td>대부분 10월부터 이듬해 3월까지 월동하는 <b>겨울철새</b>이나, 최근 4대강 등 내륙 하천에서 연중 번식하는 텃새화 개체군 증가.</td></tr>
+                                    </table>
+                                </div>
+
+                                <!-- Habitat & Distribution in Korea -->
+                                <div class="eco-card">
+                                    <div class="eco-card-header"><i class="fa-solid fa-map-pin"></i> (3) 국내 활동지역 및 주요 서식처 (Habitat in Korea)</div>
+                                    <p class="eco-desc-p">전국의 물이 있는 곳이면 어디든 도래하며, 특히 유속이 완만한 하천 중하류, 저수지, 하구 습지 및 인접 농경지를 주 무대로 활동합니다.</p>
+                                    <table class="eco-table">
+                                        <tr><th>주요 서식지</th><td><b>낙동강 하구 대저생태공원 및 을숙도</b>, 한강 하구, 금강, 만경강, 동진강, 천수만 간척지, 시화호, 주남저수지 등 전국 수계</td></tr>
+                                        <tr><th>주야간 공간 분할</th><td>
+                                            - <b>주간(Daytime)</b>: 포식자를 피해 하천 중앙의 탁 트인 개활 수면 및 모래톱에서 무리 지어 부유 휴식.<br/>
+                                            - <b>야간(Nighttime)</b>: 일몰 직후 주변 농경지(벼 낙곡 섭식) 및 수심 얕은 갈대습지로 이동.
+                                        </td></tr>
+                                    </table>
+                                </div>
+
+                                <!-- Home Range & Migration -->
+                                <div class="eco-card">
+                                    <div class="eco-card-header"><i class="fa-solid fa-compass"></i> (4) 행동권 및 이동 범위 (Home Range)</div>
+                                    <table class="eco-table">
+                                        <tr><th>일일 행동반경</th><td>월동지 내 주간 수면 ↔ 야간 농경지 왕복 <b>반경 5 ~ 30 km</b>.</td></tr>
+                                        <tr><th>내륙 수계 이동</th><td>기온 및 결빙 상태에 따라 하구에서 내륙 상류 하천으로 <b>100 ~ 300 km</b> 이동 분산.</td></tr>
+                                        <tr><th>비행 역학</th><td>수면 위 10 ~ 150 m 초저고도로 수면 효과(Ground effect)를 타며 맞바람 저항을 줄이고 맹금류의 급강하 공격을 방어 (순항 속도 40~75 km/h).</td></tr>
+                                    </table>
+                                </div>
+
+                                <!-- Legal Status & Management -->
+                                <div class="eco-card eco-full-card">
+                                    <div class="eco-card-header"><i class="fa-solid fa-scale-balanced"></i> (5) 법적 보호 등급 및 관리 현황 (Legal & Environmental Status)</div>
+                                    <table class="eco-table">
+                                        <tr><th>법적 지위</th><td>일반 야생조수 (허가받은 수렵장 및 기간 외 포획 금지)</td></tr>
+                                        <tr><th>방역 관리 핵심종</th><td><b>고병원성 조류인플루엔자(HPAI) 핵심 모니터링 대상종</b>. 겨울철 가금농가 주변 농경지로의 야간 이동으로 인한 바이러스 전파 위험 관리.</td></tr>
+                                        <tr><th>보전 시사점</th><td>낙동강 대저생태공원과 을숙도 사이의 하천변 식생 완충대 및 수변 생태 회랑(Ecological Corridor) 지속 보전 필요.</td></tr>
+                                    </table>
+                                    <div class="telemetry-link-box">
+                                        <strong>🛰️ GPS 텔레메트리 실측 연계</strong>: 부산 대저생태공원에서 부착된 청둥오리 ke2417 개체가 낙동강 수계를 거슬러 올라가 내륙으로 288.2 km를 북상한 궤적과 24시간 일주기 속도 분석을 통한 주야간 서식지 교대(Diel Habitat Shifting)는 오리류의 높은 이동성과 방역 예찰 지점을 실측으로 증명합니다.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 5. SPOT-BILLED DUCK ECOLOGY -->
+                        <div class="eco-pane" id="eco-spotbill">
+                            <div class="eco-species-header">
+                                <div class="eco-title-group">
+                                    <h3>🦆 흰뺨검둥오리 <span class="eco-scientific">Anas zonorhyncha</span></h3>
+                                    <div class="eco-taxonomy">기러기목(Anseriformes) 오리과(Anatidae) | 영명: Eastern Spot-billed Duck</div>
+                                </div>
+                                <div class="eco-badge-list">
+                                    <span class="eco-status-badge badge-resident"><i class="fa-solid fa-house-chimney"></i> 대한민국 대표 텃새 오리</span>
+                                    <span class="eco-status-badge badge-migratory"><i class="fa-solid fa-water"></i> 수면채식성 (Dabbling Duck)</span>
+                                    <span class="eco-status-badge badge-waterfowl"><i class="fa-solid fa-shield-cat"></i> 도시 생태하천 지표종</span>
+                                </div>
+                            </div>
+
+                            <div class="eco-sections-grid">
+                                <!-- Morphology -->
+                                <div class="eco-card">
+                                    <div class="eco-card-header"><i class="fa-solid fa-ruler-combined"></i> (1) 형태적 특징 (Morphology)</div>
+                                    <table class="eco-table">
+                                        <tr><th>몸길이(체장)</th><td>약 55 ~ 63 cm</td></tr>
+                                        <tr><th>날개편길이(익폭)</th><td>약 85 ~ 95 cm</td></tr>
+                                        <tr><th>몸무게</th><td>0.8 ~ 1.4 kg</td></tr>
+                                        <tr><th>깃털 및 외형</th><td>암수 깃털 색상이 매우 유사함. 몸통 전체가 흑갈색 비늘무늬이며, 뺨과 멱은 연한 황백색. 눈을 가로지르는 짙은 눈선과 뺨의 흑갈색 선이 뚜렷.</td></tr>
+                                        <tr><th>결정적 식별 포인트</th><td>검은색 부리 끝에 <b>선명한 레몬빛 노란색 반점(Yellow spot)</b>이 있어 청둥오리 암컷과 즉시 구별 가능.</td></tr>
+                                        <tr><th>날개 깃</th><td>날개 윗면에 짙은 청록색의 익경(Speculum)이 있으며 앞뒤로 뚜렷한 흰색 띠가 둘러져 있음.</td></tr>
+                                    </table>
+                                </div>
+
+                                <!-- Ecology & Life History -->
+                                <div class="eco-card">
+                                    <div class="eco-card-header"><i class="fa-solid fa-egg"></i> (2) 생태 및 생활사 (Ecology & Breeding)</div>
+                                    <table class="eco-table">
+                                        <tr><th>식성 (Diet)</th><td><b>초식성 위주의 잡식성</b>. 수생식물의 잎, 줄기, 씨앗, 논의 벼 낙곡, 부평초, 수서곤충, 작은 우렁이 등 섭식.</td></tr>
+                                        <tr><th>채식 방식</th><td>청둥오리와 마찬가지로 얕은 물가에서 수면을 훑거나 몸을 거꾸로 세워 바닥의 식생을 먹는 수면 채식.</td></tr>
+                                        <tr><th>번식기</th><td>4월 ~ 7월 (한국 전역에서 번식)</td></tr>
+                                        <tr><th>둥지 및 산란</th><td>하천변 갈대밭, 풀숲, 하중도 땅 위에 마른 풀을 모으고 암컷 솜털을 깔아 둥지 짓고 7 ~ 12개 산란. 포란 24~26일.</td></tr>
+                                        <tr><th>육추 습성</th><td>부화 직후 어미 오리의 인솔 하에 10여 마리의 새끼들이 줄지어 헤엄치며 먹이를 찾는 친숙한 육추 광경 연출.</td></tr>
+                                        <tr><th>이동성</th><td>과거에는 겨울철새와 여름철새가 섞여 있었으나, 현재는 <b>우리나라 전역에서 1년 내내 번식하고 살아가는 대표적인 정주 텃새</b>.</td></tr>
+                                    </table>
+                                </div>
+
+                                <!-- Habitat & Distribution in Korea -->
+                                <div class="eco-card">
+                                    <div class="eco-card-header"><i class="fa-solid fa-map-pin"></i> (3) 국내 활동지역 및 주요 서식처 (Habitat in Korea)</div>
+                                    <p class="eco-desc-p">자연 하천뿐만 아니라 도심을 관통하는 콘크리트 인공 하천의 생태 복원 구간에서도 가장 먼저 적응하여 살아가는 친인간적 물새입니다.</p>
+                                    <table class="eco-table">
+                                        <tr><th>주요 서식지</th><td>전국의 크고 작은 자연 하천, 호수, 농경지 수로, 연안 간척지 습지</td></tr>
+                                        <tr><th>도시 생태하천</th><td>서울 청계천·중랑천·양재천, 대전 갑천·유등천, 부산 온천천·수영강 등 도심 하천 전역에 상주 번식</td></tr>
+                                        <tr><th>서식 선호 환경</th><td>갈대와 물억새가 발달하여 둥지를 숨기기 좋은 둔치 및 수심 0.3~1m의 잔잔한 여울</td></tr>
+                                    </table>
+                                </div>
+
+                                <!-- Home Range & Migration -->
+                                <div class="eco-card">
+                                    <div class="eco-card-header"><i class="fa-solid fa-compass"></i> (4) 행동권 및 이동 범위 (Home Range)</div>
+                                    <table class="eco-table">
+                                        <tr><th>일일 행동반경</th><td>텃새로서 일상적인 행동반경은 <b>2 ~ 10 km</b> 내외로 매우 국지적.</td></tr>
+                                        <tr><th>동절기 국지 이동</th><td>강추위로 내륙 소하천이 얼어붙을 때만 얼지 않은 하류 기수역(대저생태공원, 을숙도 등)으로 <b>15 ~ 25 km</b> 단거리 피난 이동.</td></tr>
+                                        <tr><th>세력권 충실성</th><td>번식에 성공한 하천 구역에 대한 높은 지소 충실성(Site fidelity)을 유지.</td></tr>
+                                    </table>
+                                </div>
+
+                                <!-- Legal Status & Management -->
+                                <div class="eco-card eco-full-card">
+                                    <div class="eco-card-header"><i class="fa-solid fa-scale-balanced"></i> (5) 법적 보호 등급 및 관리 현황 (Legal & Environmental Status)</div>
+                                    <table class="eco-table">
+                                        <tr><th>법적 지위</th><td>일반 야생조수 (법정보호종 아님, 포획 금지)</td></tr>
+                                        <tr><th>생태적 가치</th><td>도시 수생태계 건강성을 가늠하는 대표적인 깃대종(Flagship species)이자 생물다양성 지표종.</td></tr>
+                                        <tr><th>위협 및 관리</th><td>도심 하천 산책로 정비에 따른 갈대숲 파괴, 길고양이 및 유기견에 의한 번식 둥지 포식 방지, 수질오염 관리.</td></tr>
+                                    </table>
+                                    <div class="telemetry-link-box">
+                                        <strong>🛰️ GPS 텔레메트리 실측 연계</strong>: 부산 낙동강 대저생태공원에서 추적된 ke2415, ke2416 개체의 최대 변위가 각각 15.6km, 22.8km에 머무르며 하구 습지 20km 반경을 벗어나지 않고 사계절 정주한 실측 데이터는 흰뺨검둥오리가 이동성 철새인 청둥오리와 달리 완벽한 국내 텃새로 정착했음을 학술적으로 뒷받침합니다.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- TAB 5: DATA TABLE & UPLOADER -->
                 <section class="tab-pane" id="data-tab">
                     <div class="analytics-container">
                         <div class="analytics-header">

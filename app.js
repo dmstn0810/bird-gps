@@ -93,6 +93,22 @@ function setupTabs() {
         });
     });
 
+    // Ecology encyclopedia subnav buttons
+    const ecoTabBtns = document.querySelectorAll('.eco-tab-btn');
+    ecoTabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            ecoTabBtns.forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.eco-pane').forEach(p => p.classList.remove('active'));
+
+            btn.classList.add('active');
+            const subTarget = btn.getAttribute('data-ecotab');
+            const subPane = document.getElementById(subTarget);
+            if (subPane) {
+                subPane.classList.add('active');
+            }
+        });
+    });
+
     // Species chips filter
     document.querySelectorAll('.species-chip').forEach(chip => {
         chip.addEventListener('click', () => {
