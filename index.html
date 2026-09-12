@@ -65,8 +65,8 @@
                 <button class="nav-tab" data-tab="compare-tab">
                     <i class="fa-solid fa-chart-line"></i> 다종 생태 비교분석
                 </button>
-                <button class="nav-tab" data-tab="cormorant-tab">
-                    <i class="fa-solid fa-dove"></i> 가마우지 심층분석
+                <button class="nav-tab" data-tab="deepdive-tab">
+                    <i class="fa-solid fa-microscope"></i> 종별 생태 심층분석
                 </button>
                 <button class="nav-tab" data-tab="data-tab">
                     <i class="fa-solid fa-table"></i> 데이터 탐색 & 업로드
@@ -292,81 +292,312 @@
                     </div>
                 </section>
 
-                <!-- TAB 3: CORMORANT DEEP DIVE -->
-                <section class="tab-pane" id="cormorant-tab">
+                <!-- TAB 3: SPECIES DEEP DIVE (ALL 4 SPECIES) -->
+                <section class="tab-pane" id="deepdive-tab">
                     <div class="analytics-container">
                         <div class="analytics-header">
-                            <h2><i class="fa-solid fa-dove"></i> 민물가마우지 5개체 정밀 행동생태 분석 (Case Studies)</h2>
-                            <p>대전 관평동 방사 이후 괴산 달천 집결, 안동 수계 분산 및 일일 출퇴근 비행, 군집 편대 비행, 태그 수명 진단</p>
+                            <h2><i class="fa-solid fa-microscope"></i> 4대 조류군 종별 생태 심층 분석 (Species Deep-Dive)</h2>
+                            <p>민물가마우지, 까치, 큰고니, 오리류 4개 조류 집단의 서식지 이용, 이동 전략, 일주기 리듬, 텔레메트리 센서 진단 정밀 보고서</p>
                         </div>
 
-                        <div class="cormorant-grid">
-                            <!-- Case 1: Release & Goesan Cluster -->
-                            <div class="case-card">
-                                <div class="case-badge">사례 연구 1</div>
-                                <h3>괴산 달천(괴강) 집단 서식지 안착</h3>
-                                <p>5월 21일 및 27일 대전 유성구 관평동(갑천)에서 방사된 민물가마우지는 즉시 북동쪽으로 <b>73km 직행</b>하여 <b>충북 괴산군 감물면 이담리 달천</b>에 전원 집결하였습니다.</p>
-                                <div class="case-fact-box">
-                                    <div>📍 <b>집결 좌표</b>: 36.8597°N, 127.8790°E</div>
-                                    <div>🛡️ <b>지소 충실성 (Site Fidelity)</b>: ku2602, ku2605는 추적 전 기간 동안 이 500m 수계 반경을 벗어나지 않고 서식.</div>
+                        <!-- Sub-navigation Tabs -->
+                        <div class="deepdive-subnav">
+                            <button class="subtab-btn active cormorant-pill" data-subtab="deepdive-cormorant">
+                                <i class="fa-solid fa-water"></i> 🦅 민물가마우지 (5수)
+                            </button>
+                            <button class="subtab-btn magpie-pill" data-subtab="deepdive-magpie">
+                                <i class="fa-solid fa-tree"></i> 🕊️ 까치 (7수)
+                            </button>
+                            <button class="subtab-btn swan-pill" data-subtab="deepdive-swan">
+                                <i class="fa-solid fa-globe"></i> 🦢 큰고니 (17수)
+                            </button>
+                            <button class="subtab-btn duck-pill" data-subtab="deepdive-duck">
+                                <i class="fa-solid fa-feather"></i> 🦆 오리류 (청둥·흰뺨 8수)
+                            </button>
+                        </div>
+
+                        <!-- 1. CORMORANT PANE -->
+                        <div class="deepdive-pane active" id="deepdive-cormorant">
+                            <div class="species-hero-banner">
+                                <div class="species-hero-left">
+                                    <h3>🦅 민물가마우지 (Great Cormorant, <i>Phalacrocorax carbo</i>)</h3>
+                                    <p>대전 갑천 방사 후 충북 괴산 달천(괴강) 집결지 안착, 안동 낙동강 및 공주 금강 수계 분산 생태</p>
+                                </div>
+                                <div class="species-stat-pills">
+                                    <span class="hero-pill">추적 개체: <strong>5수 (ku2601~ku2605)</strong></span>
+                                    <span class="hero-pill">핵심 허브: <strong>충북 괴산 달천</strong></span>
+                                    <span class="hero-pill">최대 속도: <strong>93 km/h (편대비행)</strong></span>
+                                    <span class="hero-pill">최대 변위: <strong>116.0 km (안동)</strong></span>
                                 </div>
                             </div>
 
-                            <!-- Case 2: Daily Commute ku2604 -->
-                            <div class="case-card">
-                                <div class="case-badge">사례 연구 2</div>
-                                <h3>ku2604: 7.7km 일일 '잠자리 ↔ 먹이터' 출퇴근 비행</h3>
-                                <p>ku2604는 괴산에서 경북 안동으로 116km 분산한 후, 107일간 13,165건의 고해상도 기록을 남겼습니다. 분석 결과 전형적인 <b>일일 출퇴근 비행(Commuting Flight)</b>이 증명되었습니다.</p>
-                                <div class="case-fact-box">
-                                    <div>🌙 <b>야간 잠자리 (Night Roost)</b>: 안동시 일직면 운산리 (야간 데이터의 63.1% 집중)</div>
-                                    <div>☀️ <b>주간 먹이터 (Day Foraging)</b>: 안동시 풍천면 용각리 구담보 일대 (매일 왕복 7.7km 비행)</div>
+                            <div class="cormorant-grid">
+                                <div class="case-card">
+                                    <div class="case-badge">사례 연구 1</div>
+                                    <h3>괴산 달천(괴강) 집단 서식지 안착</h3>
+                                    <p>5월 21일 및 27일 대전 유성구 관평동(갑천)에서 방사된 민물가마우지는 즉시 북동쪽으로 <b>73km 직행</b>하여 <b>충북 괴산군 감물면 이담리 달천</b>에 전원 집결하였습니다.</p>
+                                    <div class="case-fact-box">
+                                        <div>📍 <b>집결 좌표</b>: 36.8597°N, 127.8790°E</div>
+                                        <div>🛡️ <b>지소 충실성 (Site Fidelity)</b>: ku2602, ku2605는 추적 전 기간 동안 이 500m 수계 반경을 벗어나지 않고 서식.</div>
+                                    </div>
+                                </div>
+
+                                <div class="case-card">
+                                    <div class="case-badge">사례 연구 2</div>
+                                    <h3>ku2604: 7.7km 일일 '잠자리 ↔ 먹이터' 출퇴근 비행</h3>
+                                    <p>ku2604는 괴산에서 경북 안동으로 116km 분산한 후, 107일간 13,165건의 고해상도 기록을 남겼습니다. 분석 결과 전형적인 <b>일일 출퇴근 비행(Commuting Flight)</b>이 증명되었습니다.</p>
+                                    <div class="case-fact-box">
+                                        <div>🌙 <b>야간 잠자리 (Night Roost)</b>: 안동시 일직면 운산리 (야간 데이터의 63.1% 집중)</div>
+                                        <div>☀️ <b>주간 먹이터 (Day Foraging)</b>: 안동시 풍천면 용각리 구담보 일대 (매일 왕복 7.7km 비행)</div>
+                                    </div>
+                                </div>
+
+                                <div class="case-card">
+                                    <div class="case-badge">사례 연구 3</div>
+                                    <h3>5월 30일 시속 93 km/h 군집 편대 비행</h3>
+                                    <p>방사 3일 차였던 5월 30일, 개체들이 서로 동기화된 속도와 고도로 무리를 지어 비행한 결정적 증거가 확인되었습니다.</p>
+                                    <div class="case-fact-box">
+                                        <div>🕒 <b>08:01~08:12</b>: 괴산 -> 충주호 편대 비행 (속도 73~80 km/h, 고도 130m)</div>
+                                        <div>🕒 <b>18:03</b>: 청주 방면 남서 비행 시 4개체가 1초 간격으로 <b>시속 92~93 km/h</b>로 동시 통과</div>
+                                    </div>
+                                </div>
+
+                                <div class="case-card">
+                                    <div class="case-badge">사례 연구 4</div>
+                                    <h3>장치 수명 및 배터리 컷오프(3.5V) 진단</h3>
+                                    <p>GPS 송신기의 전압 및 신호 패턴 분석을 통해 개체의 폐사, 하네스 탈락, 정상 방전 상태를 성공적으로 감별했습니다.</p>
+                                    <div class="case-fact-box">
+                                        <div>🔋 <b>ku2605</b>: 7월 30일 3.49V 도달 후 정상 방전 종료.</div>
+                                        <div>⚠️ <b>ku2602</b>: 5월 31일 이후 좌표가 고정된 채 8월 27일 3.57V로 방전 (폐사 또는 태그 탈락 추정).</div>
+                                        <div>💧 <b>ku2603</b>: 6월 23일 충주 단월동서 배터리 4.01V 정상 상태로 수신 위성 0개 추락 (수중 침수/안테나 파손).</div>
+                                        <div>🌟 <b>ku2604</b>: 107일간 4.2V 완충 유지하며 가장 건강하게 가동.</div>
+                                    </div>
                                 </div>
                             </div>
 
-                            <!-- Case 3: Flocking Flight -->
-                            <div class="case-card">
-                                <div class="case-badge">사례 연구 3</div>
-                                <h3>5월 30일 시속 93 km/h 군집 편대 비행</h3>
-                                <p>방사 3일 차였던 5월 30일, 개체들이 서로 동기화된 속도와 고도로 무리를 지어 비행한 결정적 증거가 확인되었습니다.</p>
-                                <div class="case-fact-box">
-                                    <div>🕒 <b>08:01~08:12</b>: 괴산 -> 충주호 편대 비행 (속도 73~80 km/h, 고도 130m)</div>
-                                    <div>🕒 <b>18:03</b>: 청주 방면 남서 비행 시 4개체가 1초 간격으로 <b>시속 92~93 km/h</b>로 동시 통과</div>
-                                </div>
-                            </div>
-
-                            <!-- Case 4: Tag Lifecycle & Voltage Cut-off -->
-                            <div class="case-card">
-                                <div class="case-badge">사례 연구 4</div>
-                                <h3>장치 수명 및 배터리 컷오프(3.5V) 진단</h3>
-                                <p>GPS 송신기의 전압 및 신호 패턴 분석을 통해 개체의 폐사, 하네스 탈락, 정상 방전 상태를 성공적으로 감별했습니다.</p>
-                                <div class="case-fact-box">
-                                    <div>🔋 <b>ku2605</b>: 7월 30일 3.49V 도달 후 정상 방전 종료.</div>
-                                    <div>⚠️ <b>ku2602</b>: 5월 31일 이후 좌표가 고정된 채 8월 27일 3.57V로 방전 (폐사 또는 태그 탈락 추정).</div>
-                                    <div>💧 <b>ku2603</b>: 6월 23일 충주 단월동서 배터리 4.01V 정상 상태로 수신 위성 0개 추락 (수중 침수/안테나 파손).</div>
-                                    <div>🌟 <b>ku2604</b>: 107일간 4.2V 완충 유지하며 가장 건강하게 가동.</div>
+                            <div class="cormorant-media-section">
+                                <h3>📷 민물가마우지 심층 분석 시각화 자료</h3>
+                                <div class="cormorant-images-grid">
+                                    <div class="media-card">
+                                        <img src="figure1_movement_overview.png" alt="이동 궤적 및 행동권" />
+                                        <div class="media-caption">Figure 1: 개체별 이동 궤적, 추적 기간 및 행동권(MCP)</div>
+                                    </div>
+                                    <div class="media-card">
+                                        <img src="figure2_diurnal_activity.png" alt="일주기 리듬" />
+                                        <div class="media-caption">Figure 2: 24시간 일주기 비행 패턴 및 안동 ku2604 출퇴근 비행</div>
+                                    </div>
+                                    <div class="media-card">
+                                        <img src="figure3_flocking_behavior.png" alt="군집 비행" />
+                                        <div class="media-caption">Figure 3: 5월 30일 시속 93km/h 군집 편대 비행 동기화</div>
+                                    </div>
+                                    <div class="media-card">
+                                        <img src="figure4_tag_health_lifecycle.png" alt="센서 헬스케어" />
+                                        <div class="media-caption">Figure 4: 배터리 전압 시계열, 센서 온도 및 신호 손실 분석</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Cormorant Visualizations -->
-                        <div class="cormorant-media-section">
-                            <h3>📷 심층 분석 시각화 자료</h3>
-                            <div class="cormorant-images-grid">
-                                <div class="media-card">
-                                    <img src="figure1_movement_overview.png" alt="이동 궤적 및 행동권" />
-                                    <div class="media-caption">Figure 1: 개체별 이동 궤적, 추적 기간 및 행동권(MCP)</div>
+                        <!-- 2. MAGPIE PANE -->
+                        <div class="deepdive-pane" id="deepdive-magpie">
+                            <div class="species-hero-banner">
+                                <div class="species-hero-left">
+                                    <h3>🕊️ 까치 (Oriental Magpie, <i>Pica sericea</i>)</h3>
+                                    <p>충주시 도심 및 농경지 텃새(Resident Bird)의 초국지적 행동권 고수, 지면 채식 및 주야간 잠자리 생태</p>
                                 </div>
-                                <div class="media-card">
-                                    <img src="figure2_diurnal_activity.png" alt="일주기 리듬" />
-                                    <div class="media-caption">Figure 2: 24시간 일주기 비행 패턴 및 안동 ku2604 출퇴근 비행</div>
+                                <div class="species-stat-pills">
+                                    <span class="hero-pill">추적 개체: <strong>7수 (ku2501~ku2506, ku2606)</strong></span>
+                                    <span class="hero-pill">핵심 서식지: <strong>충주시 목행동·대소원면·안림동</strong></span>
+                                    <span class="hero-pill">평균 행동반경: <strong>0.3 ~ 5.7 km (초국지성)</strong></span>
+                                    <span class="hero-pill">최장 추적: <strong>94.7일 (ku2505, 4,321건)</strong></span>
                                 </div>
-                                <div class="media-card">
-                                    <img src="figure3_flocking_behavior.png" alt="군집 비행" />
-                                    <div class="media-caption">Figure 3: 5월 30일 시속 93km/h 군집 편대 비행 동기화</div>
+                            </div>
+
+                            <div class="cormorant-grid">
+                                <div class="case-card">
+                                    <div class="case-badge magpie-badge">사례 연구 1</div>
+                                    <h3>초국지적 세력권 및 지소 충실성 (Home Range Fidelity)</h3>
+                                    <p>충주 도심 및 근교 농경지에서 포획·부착된 7개체 모두 <b>최대 이동 변위가 0.3 ~ 5.7 km</b>에 불과하여 번식 둥지를 중심으로 반경 1km 미만의 좁은 영역을 연중 고수함을 완벽히 실증했습니다.</p>
+                                    <div class="case-fact-box magpie-fact">
+                                        <div>🏡 <b>행동권 (MCP)</b>: 전 개체 행동권 면적이 0.8 ~ 4.2 km² 수준으로 매우 조밀</div>
+                                        <div>📍 <b>서식 중심지</b>: 충주시 목행동 농경지, 대소원면 과수원, 안림동 주거지 인근 수목림</div>
+                                    </div>
                                 </div>
-                                <div class="media-card">
-                                    <img src="figure4_tag_health_lifecycle.png" alt="센서 헬스케어" />
-                                    <div class="media-caption">Figure 4: 배터리 전압 시계열, 센서 온도 및 신호 손실 분석</div>
+
+                                <div class="case-card">
+                                    <div class="case-badge magpie-badge">사례 연구 2</div>
+                                    <h3>지면 채식(Ground Foraging) 및 단거리 도심 비행</h3>
+                                    <p>비행 속도 분석 결과 <b>평균 비행 속도는 시속 15 ~ 35 km/h</b>로 장거리 직선 활공보다는 수목, 지붕, 전신주 사이를 짧게 오가는 도심 적응형 호핑(Hopping) 이동 양상을 보였습니다.</p>
+                                    <div class="case-fact-box magpie-fact">
+                                        <div>🐛 <b>주요 먹이원</b>: 과수원 낙과, 지면 곤충 및 지렁이, 음식물 찌꺼기</div>
+                                        <div>📏 <b>비행 고도</b>: 80 ~ 130 m (지상 건축물 상공 10~30m 내외 저고도 비행)</div>
+                                    </div>
+                                </div>
+
+                                <div class="case-card">
+                                    <div class="case-badge magpie-badge">사례 연구 3</div>
+                                    <h3>야간 집단 잠자리(Roosting) 및 0 km/h 정지 리듬</h3>
+                                    <p>24시간 일주기 분석에서 일몰 후 <b>19시부터 익일 05시까지 속도가 0 km/h</b>로 완전히 정지하는 뚜렷한 주행성(Diurnal) 생체 리듬을 나타냈습니다.</p>
+                                    <div class="case-fact-box magpie-fact">
+                                        <div>🌙 <b>잠자리 특성</b>: 마을 인근 활엽수 거목, 송전철탑의 안전한 프레임 내부에서 취침</div>
+                                        <div>☀️ <b>활동 개시</b>: 일출 직후(05:30~06:00) 둥지 주변 경계 울음과 함께 채식 비행 시작</div>
+                                    </div>
+                                </div>
+
+                                <div class="case-card">
+                                    <div class="case-badge magpie-badge">사례 연구 4</div>
+                                    <h3>센서 운용 안정성 및 최장 추적 개체 ku2505</h3>
+                                    <p><b>ku2505</b>는 94.7일간 4,321건의 위치 데이터를 결측 없이 전송하였으며, 도심 고층 구조물과 전선망의 간섭에도 불구하고 <b>평균 위성 수신 수 8.2개</b>를 유지하며 장비 신뢰성을 입증했습니다.</p>
+                                    <div class="case-fact-box magpie-fact">
+                                        <div>🔋 <b>배터리 상태</b>: 전 개체 3.9 ~ 4.2V의 안정적 전압 유지 (도시 일조량 충분)</div>
+                                        <div>📊 <b>총 수신 건수</b>: 7개체 합산 12,668건의 고밀도 도심 생태 데이터 확보</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="cormorant-media-section">
+                                <h3>📷 까치 심층 분석 시각화 자료</h3>
+                                <div class="cormorant-images-grid" style="grid-template-columns: 1fr;">
+                                    <div class="media-card">
+                                        <img src="figure6_magpie_deepdive.png" alt="까치 심층 생태 분석" />
+                                        <div class="media-caption">Figure 6: 까치 충주시 서식지 행동권(MCP), 주야간 비행 속도 프로파일, 서식처 공간 분포 및 핵심 생태 요약</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 3. SWAN PANE -->
+                        <div class="deepdive-pane" id="deepdive-swan">
+                            <div class="species-hero-banner">
+                                <div class="species-hero-left">
+                                    <h3>🦢 큰고니 (Whooper Swan, <i>Cygnus cygnus</i>)</h3>
+                                    <p>부산 낙동강 하구 을숙도 월동 → 한반도 종단 → 몽골·바이칼호 → 시베리아 레나강 툰드라(북위 65°N) 3,384km 대륙간 횡단</p>
+                                </div>
+                                <div class="species-stat-pills">
+                                    <span class="hero-pill">추적 개체: <strong>17수 (ke2401~ke2412, ke2421~ke2425)</strong></span>
+                                    <span class="hero-pill">동계 월동지: <strong>부산 사하구 을숙도 하구</strong></span>
+                                    <span class="hero-pill">대륙횡단 최대변위: <strong>3,384.4 km (ke2403, 64.98°N)</strong></span>
+                                    <span class="hero-pill">최장 추적 기간: <strong>633.7일 (ke2407, 약 1.7년)</strong></span>
+                                </div>
+                            </div>
+
+                            <div class="cormorant-grid">
+                                <div class="case-card">
+                                    <div class="case-badge swan-badge">사례 연구 1</div>
+                                    <h3>부산 낙동강 하구 을숙도 동계 핵심 월동 기지</h3>
+                                    <p>17개체 모두 12월부터 익년 3월까지 <b>부산 을숙도, 명지 갯벌, 대저 수계</b>에 집중 월동하며, 하구 삼각주의 새섬매자기(Scirpus planiculmis) 덩이줄기를 주식으로 섭식하여 장거리 비행 에너지를 축적했습니다.</p>
+                                    <div class="case-fact-box swan-fact">
+                                        <div>📍 <b>핵심 월동지</b>: 부산 사하구 하단동 을숙도 철새도래지 (천연기념물 제179호)</div>
+                                        <div>🌿 <b>월동기 행동</b>: 조수 간만의 차에 맞추어 간조 시 갯벌 노출지 섭식, 만조 시 수면 휴식</div>
+                                    </div>
+                                </div>
+
+                                <div class="case-card">
+                                    <div class="case-badge swan-badge">사례 연구 2</div>
+                                    <h3>3월 말 춘계 대륙간 북상 대이동 (Spring Migration)</h3>
+                                    <p>기온 상승이 시작되는 3월 하순 일제히 북상을 개시하여 <b>한반도 내륙(소백·태백산맥) 관통 → 북한 원산/함흥만 → 중국 요동반도·발해만 → 내몽골 고원 초원</b>을 거쳐 북상하는 초장거리 이동로를 개척했습니다.</p>
+                                    <div class="case-fact-box swan-fact">
+                                        <div>🧭 <b>철새 이동 경로</b>: 동아시아-대양주 이동경로(EAAF)의 핵심 내륙 회랑 실증</div>
+                                        <div>🏞️ <b>주요 기착지 (Stopover)</b>: 내몽골 오논강(Onon River) 습지 및 러시아 바이칼호 남부</div>
+                                    </div>
+                                </div>
+
+                                <div class="case-card">
+                                    <div class="case-badge swan-badge">사례 연구 3</div>
+                                    <h3>시베리아 레나강 툰드라(64.98°N) 번식지 안착</h3>
+                                    <p><b>ke2403</b> 등 주요 개체는 극동 러시아 사하 공화국 레나강(Lena River) 유역의 <b>북위 64.98°N 영구동토 툰드라 습지</b>까지 직행하여 직선거리 3,384.4 km, 실 누적이동 7,800km를 주파하는 경이로운 번식지 안착을 달성했습니다.</p>
+                                    <div class="case-fact-box swan-fact">
+                                        <div>❄️ <b>번식지 환경</b>: 시베리아 아북극권 툰드라 호소 지대 (5~8월 백야 현상 속 번식)</div>
+                                        <div>🏆 <b>최장 누적이동</b>: ke2423 개체는 496일간 <b>총 13,706.3 km</b> 누적 이동 기록</div>
+                                    </div>
+                                </div>
+
+                                <div class="case-card">
+                                    <div class="case-badge swan-badge">사례 연구 4</div>
+                                    <h3>고고도 산맥 횡단(1,500m) 및 태그 장기 수명(633일)</h3>
+                                    <p>백두대간과 몽골 고원을 횡단할 때 <b>고도 1,000 ~ 1,500 m</b>의 고고도 제트기류 순풍을 활용하여 <b>최고 시속 85 ~ 153 km/h</b>의 순항 속도를 발휘했습니다. <b>ke2407</b>은 633.7일 동안 배터리 고갈 없이 완벽 가동되었습니다.</p>
+                                    <div class="case-fact-box swan-fact">
+                                        <div>⚡ <b>최고 비행 속도</b>: 강한 순풍 활용 시 순간 시속 153.2 km/h 기록</div>
+                                        <div>🔋 <b>태그 내구성</b>: 태양광 패널이 혹한(-35°C)의 시베리아 기저 환경을 극복하고 완충 유지</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="cormorant-media-section">
+                                <h3>📷 큰고니 심층 분석 시각화 자료</h3>
+                                <div class="cormorant-images-grid" style="grid-template-columns: 1fr;">
+                                    <div class="media-card">
+                                        <img src="figure7_swan_deepdive.png" alt="큰고니 대륙간 횡단 분석" />
+                                        <div class="media-caption">Figure 7: 큰고니 대륙간 횡단 이동 경로(A), 위도별 춘계 북상 시계열(B), 개체별 최대 이동 변위 Top 10(C), 핵심 생태 요약(D)</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 4. DUCK PANE -->
+                        <div class="deepdive-pane" id="deepdive-duck">
+                            <div class="species-hero-banner">
+                                <div class="species-hero-left">
+                                    <h3>🦆 오리류 (청둥오리 & 흰뺨검둥오리, Waterfowl)</h3>
+                                    <p>부산 낙동강 대저생태공원 및 을숙도 월동, 북방 철새형(청둥오리)과 정주 텃새형(흰뺨검둥오리)의 이동성 대조 및 주야간 서식지 교대</p>
+                                </div>
+                                <div class="species-stat-pills">
+                                    <span class="hero-pill">추적 개체: <strong>8수 (청둥 6수, 흰뺨 2수)</strong></span>
+                                    <span class="hero-pill">핵심 서식지: <strong>부산 대저생태공원 · 을숙도</strong></span>
+                                    <span class="hero-pill">청둥오리 최대변위: <strong>288.2 km (내륙 북상)</strong></span>
+                                    <span class="hero-pill">흰뺨검둥오리 변위: <strong>15.6 ~ 22.8 km (하구 밀착)</strong></span>
+                                </div>
+                            </div>
+
+                            <div class="cormorant-grid">
+                                <div class="case-card">
+                                    <div class="case-badge duck-badge">사례 연구 1</div>
+                                    <h3>청둥오리(이동성 철새) vs 흰뺨검둥오리(국지 텃새) 분화</h3>
+                                    <p>동일 수계에서 포획된 수금류임에도 이동 습성이 뚜렷이 갈렸습니다. 청둥오리 <b>ke2417</b>은 낙동강 본류를 따라 <b>내륙으로 288.2 km 북상</b>한 반면, 텃새화된 흰뺨검둥오리(ke2415, ke2416)는 하구 22km 이내에 정주했습니다.</p>
+                                    <div class="case-fact-box duck-fact">
+                                        <div>🟢 <b>청둥오리 (Anas platyrhynchos)</b>: 북방 이동성 철새 본능 유지, 수계를 통한 광역 확산</div>
+                                        <div>🟠 <b>흰뺨검둥오리 (Anas zonorhyncha)</b>: 연중 부산 대저생태공원 습지 주변 서식 충실성 유지</div>
+                                    </div>
+                                </div>
+
+                                <div class="case-card">
+                                    <div class="case-badge duck-badge">사례 연구 2</div>
+                                    <h3>주야간 서식지 교대 행동 (Diel Habitat Shifting)</h3>
+                                    <p>오리류 특유의 <b>주야간 서식처 분할</b>이 명확히 관측되었습니다. 주간(09~16시)에는 맹금류의 시각 포식을 피해 낙동강 넓은 본류 수면에 떠서 부유·휴식하고, 야간(18~04시)에는 얕은 갈대습지와 농경지로 이동했습니다.</p>
+                                    <div class="case-fact-box duck-fact">
+                                        <div>☀️ <b>주간 안전 구역 (Diurnal Roost)</b>: 낙동강 본류 넓은 개활 수면 (유영 및 휴식)</div>
+                                        <div>🌙 <b>야간 섭식 구역 (Nocturnal Foraging)</b>: 대저·명지 농경지 낙곡 및 얕은 갈대 습지 풀씨 섭식</div>
+                                    </div>
+                                </div>
+
+                                <div class="case-card">
+                                    <div class="case-badge duck-badge">사례 연구 3</div>
+                                    <h3>수면 밀착 초저고도(10~150m) 비행 동역학</h3>
+                                    <p>고고도 활공을 하는 큰고니나 왜가리류와 달리, 오리류는 <b>수면 위 10 ~ 150 m로 밀착하여 비행</b>함으로써 강한 하천 맞바람 저항을 최소화하고 매·참매 등 상공 맹금류의 급강하 공격을 방어하는 특성을 보였습니다.</p>
+                                    <div class="case-fact-box duck-fact">
+                                        <div>✈️ <b>비행 속도</b>: 이동 비행 시 시속 40 ~ 75 km/h의 빠른 날갯짓 직진 비행</div>
+                                        <div>🌊 <b>표면 기류 활용</b>: 수면 효과(Ground Effect)를 유도하여 장거리 이동 시 에너지 소모 절감</div>
+                                    </div>
+                                </div>
+
+                                <div class="case-card">
+                                    <div class="case-badge duck-badge">사례 연구 4</div>
+                                    <h3>대저-을숙도 하천 회랑 보전 및 AI(조류인플루엔자) 예찰</h3>
+                                    <p>오리류의 활발한 야간 농경지 이동은 야생조류와 가금농가 간의 접점 분석에 중요한 단서를 제공합니다. 대저생태공원과 을숙도를 잇는 <b>하천 생태 회랑(River Ecological Corridor)의 건강성 보전</b>이 필수적입니다.</p>
+                                    <div class="case-fact-box duck-fact">
+                                        <div>🛡️ <b>방역 예찰 지점</b>: 대저 수계와 김해 농경지 사이의 야간 이동 통로 정밀 감시</div>
+                                        <div>🌱 <b>습지 복원 과제</b>: 낙동강 하구 하중도(대저도, 맥도) 수변 갈대군락의 지속적 보전</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="cormorant-media-section">
+                                <h3>📷 오리류 심층 분석 시각화 자료</h3>
+                                <div class="cormorant-images-grid" style="grid-template-columns: 1fr;">
+                                    <div class="media-card">
+                                        <img src="figure8_duck_deepdive.png" alt="오리류 심층 생태 분석" />
+                                        <div class="media-caption">Figure 8: 낙동강 하구 대저생태공원 및 을숙도 서식 궤적(A), 청둥오리 vs 흰뺨검둥오리 이동 변위 비교(B), 24시간 주야간 활동 리듬(C), 핵심 생태 요약(D)</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

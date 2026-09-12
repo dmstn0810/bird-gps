@@ -77,6 +77,22 @@ function setupTabs() {
         });
     });
 
+    // Deep-dive subnav buttons
+    const subtabBtns = document.querySelectorAll('.subtab-btn');
+    subtabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            subtabBtns.forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.deepdive-pane').forEach(p => p.classList.remove('active'));
+
+            btn.classList.add('active');
+            const subTarget = btn.getAttribute('data-subtab');
+            const subPane = document.getElementById(subTarget);
+            if (subPane) {
+                subPane.classList.add('active');
+            }
+        });
+    });
+
     // Species chips filter
     document.querySelectorAll('.species-chip').forEach(chip => {
         chip.addEventListener('click', () => {
