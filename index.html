@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>야생조류 통합 GPS 텔레메트리 대시보드 (WildBird Telemetry Hub)</title>
+    
+    <!-- Pretendard Font & FontAwesome Icons -->
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <!-- Leaflet GIS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <!-- Chart.js 4.4 -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+    <!-- SheetJS & PapaParse for Drag-and-Drop Parsing -->
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+
+    <!-- Embedded Data (for instant local viewing without CORS restriction) -->
+    <script src="data.js"></script>
+
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div class="app-container">
+        <!-- Top Navigation Bar -->
+        <header class="top-nav">
+            <div class="nav-brand">
+                <i class="fa-solid fa-satellite-dish brand-icon"></i>
+                <div>
+                    <h1 class="brand-title">야생조류 통합 GPS 텔레메트리 빅데이터 플랫폼</h1>
+                    <p class="brand-subtitle">민물가마우지(5) · 까치(7) · 큰고니(17) · 오리류(8) 4대 조류군 이동생태 비교 분석 대시보드</p>
+                </div>
+            </div>
+
+            <!-- Global Key Stats -->
+            <div class="nav-stats">
+                <div class="stat-badge">
+                    <span class="stat-label">총 추적 개체</span>
+                    <span class="stat-val" id="statBirdCount">37수</span>
+                </div>
+                <div class="stat-badge">
+                    <span class="stat-label">총 누적이동거리</span>
+                    <span class="stat-val text-emerald" id="statTotalDist">148,600 km</span>
+                </div>
+                <div class="stat-badge">
+                    <span class="stat-label">최대 비행속도</span>
+                    <span class="stat-val text-amber" id="statMaxSpeed">93 km/h</span>
+                </div>
+                <div class="stat-badge">
+                    <span class="stat-label">대륙횡단 최대변위</span>
+                    <span class="stat-val text-purple" id="statMaxDisp">3,384 km</span>
+                </div>
+            </div>
+
+            <!-- Tab Buttons -->
+            <div class="nav-tabs">
+                <button class="nav-tab active" data-tab="map-tab">
+                    <i class="fa-solid fa-map-location-dot"></i> GIS 위치추적 지도
+                </button>
+                <button class="nav-tab" data-tab="compare-tab">
+                    <i class="fa-solid fa-chart-line"></i> 다종 생태 비교분석
+                </button>
+                <button class="nav-tab" data-tab="cormorant-tab">
+                    <i class="fa-solid fa-dove"></i> 가마우지 심층분석
+                </button>
+                <button class="nav-tab" data-tab="data-tab">
+                    <i class="fa-solid fa-table"></i> 데이터 탐색 & 업로드
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Body Layout -->
+        <div class="main-body">
+            <!-- Left Sidebar Controls -->
+            <aside class="sidebar">
+                <!-- Species Selection Filter -->
+                <div class="sidebar-section">
+                    <div class="section-title">
+                        <i class="fa-solid fa-filter"></i> 조류 종(Species) 분류 필터
+                    </div>
+                    <div class="species-chips">
+                        <button class="species-chip active" data-species="all">전체 (<span id="countAll">37</span>)</button>
+                        <button class="species-chip" data-species="cormorant">
+                            <span class="indicator cormorant-dot"></span> 가마우지 (<span id="countCormorant">5</span>)
+                        </button>
+                        <button class="species-chip" data-species="magpie">
+                            <span class="indicator magpie-dot"></span> 까치 (<span id="countMagpie">7</span>)
+                        </button>
+                        <button class="species-chip" data-species="swan">
+                            <span class="indicator swan-dot"></span> 큰고니 (<span id="countSwan">17</span>)
+                        </button>
+                        <button class="species-chip" data-species="duck">
+                            <span class="indicator duck-dot"></span> 오리류 (<span id="countDuck">8</span>)
+                        </button>
+                        <button class="species-chip" data-species="custom">
+                            <span class="indicator custom-dot"></span> 신규업로드 (<span id="countCustom">0</span>)
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Individual Checkbox List -->
+                <div class="sidebar-section bird-list-section">
+                    <div class="section-header-flex">
+                        <div class="section-title">
+                            <i class="fa-solid fa-list-check"></i> 개체 목록 (<span id="activeCountDisplay">37</span>)
+                        </div>
+                        <div class="list-toggle-btns">
+                            <button id="btnSelectAll">전체선택</button>
+                            <span>|</span>
+                            <button id="btnDeselectAll">전체해제</button>
+                        </div>
+                    </div>
+                    <div class="bird-items-container" id="birdItemsContainer">
+                        <!-- Populated dynamically via app.js -->
+                    </div>
+                </div>
+
+                <!-- Map Layers & Display Options -->
+                <div class="sidebar-section">
+                    <div class="section-title">
+                        <i class="fa-solid fa-layer-group"></i> 지도 레이어 옵션
+                    </div>
+                    <div class="layer-options">
+                        <label class="radio-label">
+                            <input type="radio" name="baseLayer" value="satellite" checked> 위성 사진 (Esri Satellite)
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="baseLayer" value="osm"> 일반 도로지도 (OpenStreetMap)
+                        </label>
+                        <hr class="divider">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="chkShowTracks" checked> 이동 궤적선 (Polylines)
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="chkShowEndpoints" checked> 시작·종료 지점 마커
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="chkShowPOIs" checked> 주요 생태 거점 (POIs)
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Timeline / Animation Slider -->
+                <div class="sidebar-section timeline-section">
+                    <div class="section-title">
+                        <i class="fa-solid fa-clock-rotate-left"></i> 시계열 이동 시뮬레이션
+                    </div>
+                    <div class="timeline-controls">
+                        <div class="slider-row">
+                            <input type="range" id="timeSlider" min="0" max="100" value="100" class="custom-slider">
+                        </div>
+                        <div class="playback-buttons">
+                            <button id="btnPlay" class="control-btn primary-btn"><i class="fa-solid fa-play"></i> 재생</button>
+                            <button id="btnReset" class="control-btn"><i class="fa-solid fa-rotate-left"></i> 초기화</button>
+                            <span class="timeline-speed">
+                                속도: 
+                                <select id="selSpeed">
+                                    <option value="1">1x</option>
+                                    <option value="5" selected>5x</option>
+                                    <option value="20">20x</option>
+                                </select>
+                            </span>
+                        </div>
+                        <div class="current-date-badge" id="currentDateDisplay">모든 기간 (전체 궤적 표시)</div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Content Area -->
+            <main class="content-area">
+                <!-- TAB 1: GIS MAP -->
+                <section class="tab-pane active" id="map-tab">
+                    <div id="map"></div>
+
+                    <!-- Floating Map Info Overlay -->
+                    <div class="map-overlay-card" id="mapOverlayCard">
+                        <div class="overlay-header">
+                            <span class="overlay-title" id="overlayTitle"><i class="fa-solid fa-circle-info"></i> 생태 이동 범례 및 현황</span>
+                            <button class="overlay-close" id="overlayCloseBtn"><i class="fa-solid fa-xmark"></i></button>
+                        </div>
+                        <div class="overlay-body" id="overlayBody">
+                            <p class="overlay-hint">좌측 개체를 클릭하거나 지도 상의 궤적·거점 마커를 클릭하면 상세 이동 정보(비행속도, 고도, 배터리)가 조회됩니다.</p>
+                            <div class="species-legend-box">
+                                <div class="legend-row"><span class="legend-dot" style="background:#8A2BE2;"></span> <b>민물가마우지(5)</b>: 대전 방사 -> 괴산 달천 집결 -> 안동/공주 분산</div>
+                                <div class="legend-row"><span class="legend-dot" style="background:#00B4D8;"></span> <b>까치(7)</b>: 충주시 도심/농경지 텃새 국지적 세력권 (반경 1km)</div>
+                                <div class="legend-row"><span class="legend-dot" style="background:#E63946;"></span> <b>큰고니(17)</b>: 부산 을숙도 월동 -> 시베리아 툰드라/몽골 횡단 (3,000+km)</div>
+                                <div class="legend-row"><span class="legend-dot" style="background:#10B981;"></span> <b>오리류(8)</b>: 청둥오리(6) & 흰뺨검둥오리(2) 낙동강 하구/대저공원 월동</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- TAB 2: COMPARATIVE ANALYTICS -->
+                <section class="tab-pane" id="compare-tab">
+                    <div class="analytics-container">
+                        <div class="analytics-header">
+                            <h2><i class="fa-solid fa-chart-pie"></i> 4대 조류군 이동생태 비교 분석</h2>
+                            <p>텃새(까치), 수계 분산형(민물가마우지), 동계 월동성 수금류(오리류), 대륙간 초장거리 철새(큰고니)의 행동권·이동 전략 정밀 비교</p>
+                        </div>
+
+                        <!-- 4 Eco-Strategy Summary Cards -->
+                        <div class="strategy-cards-grid-4">
+                            <!-- Magpie -->
+                            <div class="strategy-card magpie-border">
+                                <div class="strategy-icon"><i class="fa-solid fa-tree"></i></div>
+                                <h3>텃새형 (Local Resident)</h3>
+                                <h4>까치 (7수)</h4>
+                                <p class="strategy-desc">일 년 내내 번식지와 둥지 주변을 벗어나지 않으며, 도심 수목·농경지를 중심으로 반경 1km 이내 좁은 세력권 유지.</p>
+                                <ul class="strategy-metrics">
+                                    <li><b>평균 이동거리</b>: 60.1 km</li>
+                                    <li><b>최대 이동변위</b>: 0.3 ~ 5.7 km</li>
+                                    <li><b>주요 서식처</b>: 충주시 목행동, 대소원면</li>
+                                    <li><b>비행 고도</b>: 80 ~ 130 m</li>
+                                </ul>
+                            </div>
+
+                            <!-- Cormorant -->
+                            <div class="strategy-card cormorant-border">
+                                <div class="strategy-icon"><i class="fa-solid fa-water"></i></div>
+                                <h3>수계 분산형 (Regional Dispersal)</h3>
+                                <h4>민물가마우지 (5수)</h4>
+                                <p class="strategy-desc">하천·호소 중심 서식. 방사 직후 73km 집단 북상(괴산 달천) 후 먹이원을 따라 안동 낙동강(116km) 및 공주 금강(85km) 분산.</p>
+                                <ul class="strategy-metrics">
+                                    <li><b>평균 이동거리</b>: 557.0 km</li>
+                                    <li><b>최대 이동변위</b>: 73.4 ~ 116.0 km</li>
+                                    <li><b>주요 서식처</b>: 괴산 달천, 안동 구담보, 공주 금강</li>
+                                    <li><b>비행 속도</b>: 순항 40~70, 최고 93 km/h</li>
+                                </ul>
+                            </div>
+
+                            <!-- Ducks -->
+                            <div class="strategy-card duck-border">
+                                <div class="strategy-icon"><i class="fa-solid fa-feather"></i></div>
+                                <h3>동계 월동형 (Winter Waterfowl)</h3>
+                                <h4>오리류 (청둥·흰뺨 8수)</h4>
+                                <p class="strategy-desc">낙동강 하구 대저생태공원과 을숙도 습지를 오가며 하천·갈대밭에서 먹이활동을 수행하고 결빙 여부에 따라 국지 이동.</p>
+                                <ul class="strategy-metrics">
+                                    <li><b>평균 이동거리</b>: 751.4 km</li>
+                                    <li><b>최대 이동변위</b>: 5.5 ~ 288.2 km</li>
+                                    <li><b>주요 서식처</b>: 부산 대저생태공원, 을숙도</li>
+                                    <li><b>비행 고도</b>: 10 ~ 150 m (수면 근접)</li>
+                                </ul>
+                            </div>
+
+                            <!-- Swan -->
+                            <div class="strategy-card swan-border">
+                                <div class="strategy-icon"><i class="fa-solid fa-globe"></i></div>
+                                <h3>대륙간 횡단 철새 (Transcontinental)</h3>
+                                <h4>큰고니 (17수)</h4>
+                                <p class="strategy-desc">동아시아 철새이동로의 핵심. 부산 을숙도 하구에서 월동 후 봄철 몽골 초원, 바이칼호, 시베리아 툰드라(북위 65°)로 3,000km+ 대륙 횡단.</p>
+                                <ul class="strategy-metrics">
+                                    <li><b>평균 이동거리</b>: 8,360.5 km (최대 16,009 km)</li>
+                                    <li><b>최대 이동변위</b>: 1,678 ~ 3,384 km</li>
+                                    <li><b>월동지 / 번식지</b>: 부산 하구 ↔ 러시아 툰드라</li>
+                                    <li><b>비행 고도</b>: 300 ~ 1,200 m (산맥 횡단)</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Comparative Charts Grid -->
+                        <div class="charts-grid">
+                            <div class="chart-card">
+                                <h3>(1) 4대 조류군 개체별 누적 이동거리 비교 (km)</h3>
+                                <div class="chart-wrapper">
+                                    <canvas id="chartCumulativeDist"></canvas>
+                                </div>
+                            </div>
+                            <div class="chart-card">
+                                <h3>(2) 조류군별 최대 이동 변위 (Displacement) 및 이동 전략</h3>
+                                <div class="chart-wrapper">
+                                    <canvas id="chartDisplacement"></canvas>
+                                </div>
+                            </div>
+                            <div class="chart-card">
+                                <h3>(3) 24시간 일주기 비행 활동성 패턴 (Hour of Day)</h3>
+                                <div class="chart-wrapper">
+                                    <canvas id="chartDiurnalActivity"></canvas>
+                                </div>
+                            </div>
+                            <div class="chart-card">
+                                <h3>(4) 비행 속도 구간별 활동 빈도 비교</h3>
+                                <div class="chart-wrapper">
+                                    <canvas id="chartSpeedDistribution"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- TAB 3: CORMORANT DEEP DIVE -->
+                <section class="tab-pane" id="cormorant-tab">
+                    <div class="analytics-container">
+                        <div class="analytics-header">
+                            <h2><i class="fa-solid fa-dove"></i> 민물가마우지 5개체 정밀 행동생태 분석 (Case Studies)</h2>
+                            <p>대전 관평동 방사 이후 괴산 달천 집결, 안동 수계 분산 및 일일 출퇴근 비행, 군집 편대 비행, 태그 수명 진단</p>
+                        </div>
+
+                        <div class="cormorant-grid">
+                            <!-- Case 1: Release & Goesan Cluster -->
+                            <div class="case-card">
+                                <div class="case-badge">사례 연구 1</div>
+                                <h3>괴산 달천(괴강) 집단 서식지 안착</h3>
+                                <p>5월 21일 및 27일 대전 유성구 관평동(갑천)에서 방사된 민물가마우지는 즉시 북동쪽으로 <b>73km 직행</b>하여 <b>충북 괴산군 감물면 이담리 달천</b>에 전원 집결하였습니다.</p>
+                                <div class="case-fact-box">
+                                    <div>📍 <b>집결 좌표</b>: 36.8597°N, 127.8790°E</div>
+                                    <div>🛡️ <b>지소 충실성 (Site Fidelity)</b>: ku2602, ku2605는 추적 전 기간 동안 이 500m 수계 반경을 벗어나지 않고 서식.</div>
+                                </div>
+                            </div>
+
+                            <!-- Case 2: Daily Commute ku2604 -->
+                            <div class="case-card">
+                                <div class="case-badge">사례 연구 2</div>
+                                <h3>ku2604: 7.7km 일일 '잠자리 ↔ 먹이터' 출퇴근 비행</h3>
+                                <p>ku2604는 괴산에서 경북 안동으로 116km 분산한 후, 107일간 13,165건의 고해상도 기록을 남겼습니다. 분석 결과 전형적인 <b>일일 출퇴근 비행(Commuting Flight)</b>이 증명되었습니다.</p>
+                                <div class="case-fact-box">
+                                    <div>🌙 <b>야간 잠자리 (Night Roost)</b>: 안동시 일직면 운산리 (야간 데이터의 63.1% 집중)</div>
+                                    <div>☀️ <b>주간 먹이터 (Day Foraging)</b>: 안동시 풍천면 용각리 구담보 일대 (매일 왕복 7.7km 비행)</div>
+                                </div>
+                            </div>
+
+                            <!-- Case 3: Flocking Flight -->
+                            <div class="case-card">
+                                <div class="case-badge">사례 연구 3</div>
+                                <h3>5월 30일 시속 93 km/h 군집 편대 비행</h3>
+                                <p>방사 3일 차였던 5월 30일, 개체들이 서로 동기화된 속도와 고도로 무리를 지어 비행한 결정적 증거가 확인되었습니다.</p>
+                                <div class="case-fact-box">
+                                    <div>🕒 <b>08:01~08:12</b>: 괴산 -> 충주호 편대 비행 (속도 73~80 km/h, 고도 130m)</div>
+                                    <div>🕒 <b>18:03</b>: 청주 방면 남서 비행 시 4개체가 1초 간격으로 <b>시속 92~93 km/h</b>로 동시 통과</div>
+                                </div>
+                            </div>
+
+                            <!-- Case 4: Tag Lifecycle & Voltage Cut-off -->
+                            <div class="case-card">
+                                <div class="case-badge">사례 연구 4</div>
+                                <h3>장치 수명 및 배터리 컷오프(3.5V) 진단</h3>
+                                <p>GPS 송신기의 전압 및 신호 패턴 분석을 통해 개체의 폐사, 하네스 탈락, 정상 방전 상태를 성공적으로 감별했습니다.</p>
+                                <div class="case-fact-box">
+                                    <div>🔋 <b>ku2605</b>: 7월 30일 3.49V 도달 후 정상 방전 종료.</div>
+                                    <div>⚠️ <b>ku2602</b>: 5월 31일 이후 좌표가 고정된 채 8월 27일 3.57V로 방전 (폐사 또는 태그 탈락 추정).</div>
+                                    <div>💧 <b>ku2603</b>: 6월 23일 충주 단월동서 배터리 4.01V 정상 상태로 수신 위성 0개 추락 (수중 침수/안테나 파손).</div>
+                                    <div>🌟 <b>ku2604</b>: 107일간 4.2V 완충 유지하며 가장 건강하게 가동.</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Cormorant Visualizations -->
+                        <div class="cormorant-media-section">
+                            <h3>📷 심층 분석 시각화 자료</h3>
+                            <div class="cormorant-images-grid">
+                                <div class="media-card">
+                                    <img src="figure1_movement_overview.png" alt="이동 궤적 및 행동권" />
+                                    <div class="media-caption">Figure 1: 개체별 이동 궤적, 추적 기간 및 행동권(MCP)</div>
+                                </div>
+                                <div class="media-card">
+                                    <img src="figure2_diurnal_activity.png" alt="일주기 리듬" />
+                                    <div class="media-caption">Figure 2: 24시간 일주기 비행 패턴 및 안동 ku2604 출퇴근 비행</div>
+                                </div>
+                                <div class="media-card">
+                                    <img src="figure3_flocking_behavior.png" alt="군집 비행" />
+                                    <div class="media-caption">Figure 3: 5월 30일 시속 93km/h 군집 편대 비행 동기화</div>
+                                </div>
+                                <div class="media-card">
+                                    <img src="figure4_tag_health_lifecycle.png" alt="센서 헬스케어" />
+                                    <div class="media-caption">Figure 4: 배터리 전압 시계열, 센서 온도 및 신호 손실 분석</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- TAB 4: DATA TABLE & UPLOADER -->
+                <section class="tab-pane" id="data-tab">
+                    <div class="analytics-container">
+                        <div class="analytics-header">
+                            <h2><i class="fa-solid fa-cloud-arrow-up"></i> 데이터 탐색 및 신규 조류 데이터 업로더</h2>
+                            <p>37개체 전수 등록 정보 조회 및 신규 오리류/야생조류 GPS 데이터(CSV/Excel) 추가 분석</p>
+                        </div>
+
+                        <!-- Drag & Drop Uploader Box -->
+                        <div class="uploader-box" id="dropZone">
+                            <div class="uploader-icon"><i class="fa-solid fa-file-import"></i></div>
+                            <h3>새로운 조류 데이터 파일(CSV / XLS / XLSX)을 이곳에 끌어다 놓으세요</h3>
+                            <p>오리류 또는 기타 조류 위치추적 데이터를 추가하면 브라우저에서 즉시 파싱하여 지도 및 차트에 자동 반영됩니다.</p>
+                            <label class="upload-btn">
+                                <i class="fa-solid fa-folder-open"></i> 컴퓨터에서 파일 선택
+                                <input type="file" id="fileInput" accept=".csv, .xls, .xlsx" style="display:none;" />
+                            </label>
+                            <div class="upload-status" id="uploadStatus"></div>
+                        </div>
+
+                        <!-- Summary Table Section -->
+                        <div class="table-section">
+                            <div class="table-controls-bar">
+                                <div class="search-box">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                    <input type="text" id="tableSearch" placeholder="개체 ID, 조류 종명, 이동 유형 검색..." />
+                                </div>
+                                <div class="table-actions">
+                                    <button id="btnExportCSV" class="control-btn primary-btn">
+                                        <i class="fa-solid fa-download"></i> 통계 CSV 다운로드
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="table-responsive">
+                                <table class="data-table" id="summaryTable">
+                                    <thead>
+                                        <tr>
+                                            <th>개체 ID</th>
+                                            <th>조류 종명</th>
+                                            <th>영문명</th>
+                                            <th>부착/서식지</th>
+                                            <th>추적 기간</th>
+                                            <th>추적 일수</th>
+                                            <th>유효 GPS(건)</th>
+                                            <th>누적 이동거리(km)</th>
+                                            <th>최대 이동변위(km)</th>
+                                            <th>최고 속도(km/h)</th>
+                                            <th>이동 전략 분류</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tableBody">
+                                        <!-- Populated via JavaScript -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <!-- Application Script -->
+    <script src="app.js"></script>
+</body>
+</html>
